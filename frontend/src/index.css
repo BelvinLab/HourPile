@@ -1,0 +1,102 @@
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;    /* empêche tout débordement horizontal */
+}
+
+#root {
+  width: 100%;
+  
+}
+:root {
+  --color-bg-deep: #2D2447;      /* violet profond */
+  --color-bg-light: #EDE9F7;     /* lavande pâle */
+  --color-bg-white: #FAFAFE;     /* blanc cassé */
+  --color-accent: #6C5CE7;       /* indigo vif */
+  --color-text-dark: #1A1523;    /* presque noir */
+  --color-text-light: #FAFAFE;   /* texte sur fond sombre */
+  --color-muted: #524D66;   /* était #6B6580 — assombri pour un meilleur contraste */
+
+  /* Typo : réglages partagés */
+  --letter-spacing-wide: 0.08em; /* l'espacement "premium" des majuscules */
+  --radius: 8px;                 /* arrondi standard des boutons/cards */
+}
+
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--color-text-dark);
+  background-color: var(--color-bg-white);
+  line-height: 1.6;
+}
+
+/* ===== CLASSES UTILITAIRES PARTAGÉES (l'ambiance FitPro) ===== */
+
+/* Un petit label en majuscules espacées (liens, eyebrows...) */
+.u-eyebrow {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+/* Un titre théâtral : très gros, très gras */
+.u-display {
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.01em;   /* les gros titres se resserrent légèrement */
+}
+
+/* Le mot coloré dans un titre */
+.u-accent {
+  color: var(--color-accent);
+}
+
+/* Bouton plein (sombre) */
+.u-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-text-dark);
+  color: var(--color-text-light);
+  border: none;
+  padding: 1rem 1.6rem;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.u-btn:hover {
+  background-color: var(--color-accent);
+}
+
+/* Bouton contour (secondaire) */
+.u-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  color: var(--color-text-dark);
+  border: 1.5px solid var(--color-text-dark);
+  padding: 1rem 1.6rem;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.u-btn-outline:hover {
+  background-color: var(--color-text-dark);
+  color: var(--color-text-light);
+}

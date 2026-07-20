@@ -1,0 +1,55 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.3rem 3rem;
+  background-color: var(--color-bg-light);
+}
+
+/* Logo : gras appuyé, l'esprit "display" de FitPro */
+.navbar-logo {
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--color-text-dark);
+}
+
+/* Liens du centre : majuscules espacées = signature FitPro */
+.navbar-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.navbar-links li {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  color: var(--color-text-dark);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.navbar-links li:hover {
+  color: var(--color-accent);
+}
+
+/* Connexion en lien : même signature majuscule, souligné animé au survol */
+.navbar-login {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  color: var(--color-text-dark);
+  text-decoration: none;
+  border: 1.5px solid var(--color-text-dark);   /* le contour */
+  padding: 0.5rem 1.2rem;                         /* de l'espace intérieur */
+  border-radius: var(--radius);                   /* coins arrondis */
+  transition: all 0.2s;
+}
+
+.navbar-login:hover {
+  background-color: var(--color-text-dark);       /* se remplit au survol */
+  color: var(--color-text-light);
+}

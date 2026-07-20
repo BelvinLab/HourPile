@@ -1,0 +1,49 @@
+.hero {
+  background-color: var(--color-bg-light);
+  padding: 4rem 3rem 5rem;
+  display: flex;              /* les deux colonnes côte à côte */
+  align-items: center;        /* centre verticalement texte et image */
+  gap: 3rem;                  /* espace entre les colonnes */
+  
+  margin: 0 auto;             /* centre toute la hero dans la page */
+}
+
+/* Colonne gauche : le texte prend la moitié */
+.hero-text {
+  flex: 1;                    /* prend une part égale de l'espace */
+}
+
+.hero-eyebrow {
+  display: inline-block;
+  color: var(--color-accent);
+  margin-bottom: 1.2rem;
+}
+
+.hero-title {
+  font-size: 3.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--color-muted);
+  max-width: 440px;
+  margin-bottom: 2.5rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Colonne droite : l'image prend l'autre moitié */
+.hero-image {
+  flex: 1;
+}
+
+/* L'image s'adapte à sa colonne sans déborder */
+.hero-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
