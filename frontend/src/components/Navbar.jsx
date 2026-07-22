@@ -1,4 +1,5 @@
 import './Navbar.css';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   return (
@@ -14,7 +15,7 @@ function Navbar() {
       </ul>
 
       {/* Connexion en lien à droite */}
-      <a className="navbar-login" href="#">Connexion</a>
+      <Link className="navbar-login" to="/login">Connexion</Link>
     </nav>
   );
 }

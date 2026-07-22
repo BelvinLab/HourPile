@@ -1,0 +1,49 @@
+.social-proof {
+  background-color: var(--color-bg-white);   /* blanc pur : tranche avec le lavande du hero */
+  padding: 2.5rem 5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);   /* fine ligne de séparation subtile */
+}
+
+.social-proof-inner {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;                     /* grand espace entre les stats */
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Chaque stat : chiffre au-dessus, label en dessous */
+.stat {
+  display: flex;
+  flex-direction: column;        /* empile verticalement : valeur puis label */
+  align-items: center;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-accent);    /* le chiffre en indigo, bien visible */
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+/* === Responsive === */
+@media (max-width: 540px) {
+  .social-proof-inner {
+    gap: 2rem;                    /* moins d'espace entre les stats */
+    flex-wrap: wrap;              /* les stats passent à la ligne si besoin */
+  }
+  .social-proof {
+    padding: 2rem 1.5rem;
+  }
+  .stat-value {
+    font-size: 2rem;             /* chiffres un peu plus petits */
+  }
+}

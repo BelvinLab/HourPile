@@ -1,7 +1,7 @@
-
+@import "tailwindcss";
 html, body {
   width: 100%;
-  overflow-x: hidden;    /* empêche tout débordement horizontal */
+  /* overflow-x: hidden;    empêche tout débordement horizontal */
 }
 
 #root {
@@ -22,21 +22,24 @@ html, body {
   --radius: 8px;                 /* arrondi standard des boutons/cards */
 }
 
-/* ===== RESET ===== */
+/* ===== RESET ===== 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
+*/
 body {
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
   color: var(--color-text-dark);
   background-color: var(--color-bg-white);
   line-height: 1.6;
 }
+input, textarea, select {
+  border-style: solid;   /* garantit que les bordures s'affichent */
+}
 
-/* ===== CLASSES UTILITAIRES PARTAGÉES (l'ambiance FitPro) ===== */
+/* ===== CLASSES UTILITAIRES PARTAGÉES  ===== */
 
 /* Un petit label en majuscules espacées (liens, eyebrows...) */
 .u-eyebrow {
@@ -99,4 +102,22 @@ body {
 .u-btn-outline:hover {
   background-color: var(--color-text-dark);
   color: var(--color-text-light);
+}
+
+/* Force les bordures et fonds Tailwind à s'afficher malgré le reset */
+input {
+  border: 1px solid #e5e7eb !important;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 60s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee { animation: none; }
 }

@@ -47,3 +47,38 @@
   height: auto;
   display: block;
 }
+
+/* === Responsive === */
+
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;    /* les colonnes s'empilent : texte puis image */
+    text-align: center;         /* on centre le texte une fois empilé */
+    padding: 3rem 2rem 4rem;
+  }
+
+  /* on centre les éléments du bloc texte */
+  .hero-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;    /* les boutons centrés */
+  }
+
+  .hero-image {
+    max-width: 500px;           /* l'image ne s'étale pas trop large */
+  }
+}
+
+@media (max-width: 540px) {
+  .hero-title {
+    font-size: 2.2rem;          /* titre plus petit sur mobile */
+  }
+
+  .hero-actions {
+    flex-direction: column;      /* les deux boutons l'un sous l'autre */
+    align-items: center;
+  }
+}

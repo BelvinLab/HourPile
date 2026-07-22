@@ -1,0 +1,94 @@
+.footer {
+  background-color: var(--color-text-dark);   /* presque noir, ferme la page */
+  color: var(--color-text-light);
+  padding: 4rem 5rem 0;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 3rem;
+}
+
+/* Marque à gauche */
+.footer-brand {
+  max-width: 280px;
+}
+
+.footer-logo {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 0.8rem;
+}
+
+.footer-tagline {
+  font-size: 0.95rem;
+  color: rgba(250, 250, 254, 0.6);
+  line-height: 1.5;
+}
+
+/* Les colonnes de liens */
+.footer-columns {
+  display: flex;
+  gap: 4rem;
+}
+
+.footer-column-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  margin-bottom: 1.2rem;
+  color: var(--color-text-light);
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.footer-links li {
+  font-size: 0.9rem;
+  color: rgba(250, 250, 254, 0.6);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.footer-links li:hover {
+  color: var(--color-accent);   /* les liens s'éclairent en indigo au survol */
+}
+
+/* Barre du bas : copyright */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);   /* fine ligne de séparation */
+  padding: 1.5rem 0;
+  text-align: center;
+}
+
+.footer-bottom p {
+  font-size: 0.85rem;
+  color: rgba(250, 250, 254, 0.5);
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .footer-inner {
+    flex-direction: column;      /* marque au-dessus, colonnes en dessous */
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .footer {
+    padding: 3rem 1.5rem 0;
+  }
+  .footer-columns {
+    flex-direction: column;      /* les colonnes de liens s'empilent aussi */
+    gap: 2rem;
+  }
+}

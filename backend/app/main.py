@@ -1,14 +1,29 @@
 from fastapi import FastAPI
 from sqlalchemy import text
-
+from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
 from app.core.database import engine
-from app.routers import auth,users,session,vocabulary
+from app.routers import auth,users,session,vocabulary,language
+
+
 app = FastAPI(title=settings.APP_NAME)
+
+
+# --- CORS : autorise le frontend à appeler cette API ---
+# Sans ça, le navigateur bloque les requêtes venant de localhost:5173
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],   # l'adresse du frontend Vite
+    allow_credentials=True,
+    allow_methods=["*"],      # autorise GET, POST, PUT, DELETE...
+    allow_headers=["*"],      # autorise tous les en-têtes (dont Authorization)
+)
+
 app.include_router(auth.router)
 app.include_router(users.router)
 app.include_router(session.router)
 app.include_router(vocabulary.router)
+app.include_router(language.router)
 
 
 @app.get("/")

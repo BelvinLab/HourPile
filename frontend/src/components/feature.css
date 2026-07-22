@@ -1,0 +1,86 @@
+.features {
+  background-color: var(--color-bg-white);
+  padding: 5rem 5rem 6rem;
+}
+
+.features-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.features-eyebrow {
+  display: inline-block;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
+
+.features-title {
+  font-size: 2.4rem;
+}
+
+/* LA GRILLE : 4 colonnes égales */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);   /* 4 colonnes de largeur égale */
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Chaque card */
+.feature-card {
+  background-color: var(--color-bg-light);
+  padding: 2rem 1.5rem;
+  border-radius: 12px;
+  transition: transform 0.2s;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);   /* la card se soulève au survol */
+}
+
+/* Le rond coloré derrière l'icône */
+.feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background-color: var(--color-accent);
+  color: var(--color-text-light);
+  border-radius: 12px;
+  margin-bottom: 1.2rem;
+}
+
+.feature-card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.feature-card-desc {
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+/* === Responsive === */
+
+/* Tablette : 4 colonnes → 2 colonnes */
+@media (max-width: 900px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile : 2 colonnes → 1 seule colonne */
+@media (max-width: 540px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  .features {
+    padding: 3rem 1.5rem 4rem;   /* moins de padding latéral sur petit écran */
+  }
+  .features-title {
+    font-size: 1.8rem;           /* titre plus petit sur mobile */
+  }
+}

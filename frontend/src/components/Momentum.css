@@ -1,0 +1,112 @@
+.momentum {
+  background-color: var(--color-bg-deep);   /* fond violet profond : contraste fort */
+  padding: 5rem 5rem 6rem;
+  color: var(--color-text-light);
+}
+
+.momentum-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.momentum-eyebrow {
+  display: inline-block;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
+
+.momentum-title {
+  font-size: 2.6rem;
+  color: var(--color-text-light);   /* titre clair sur fond sombre */
+  margin-bottom: 1.5rem;
+}
+
+.momentum-text {
+  font-size: 1.1rem;
+  color: rgba(250, 250, 254, 0.75);   /* texte clair légèrement atténué */
+  max-width: 600px;
+  margin: 0 auto 3.5rem;
+  line-height: 1.6;
+}
+
+/* La comparaison : deux cards côte à côte */
+.momentum-compare {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.compare-card {
+  flex: 1;
+  max-width: 340px;
+  background-color: rgba(255, 255, 255, 0.06);   /* card translucide sur le fond sombre */
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.compare-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  margin-bottom: 1.5rem;
+  color: var(--color-text-light);
+}
+
+/* La zone des barres : elles s'alignent en bas */
+.compare-bars {
+  display: flex;
+  align-items: flex-end;      /* les barres partent du bas */
+  gap: 0.5rem;
+  height: 120px;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+}
+
+/* Chaque barre */
+.compare-bars span {
+  width: 28px;
+  border-radius: 4px 4px 0 0;   /* coins arrondis en haut seulement */
+}
+
+/* Barres vertes/indigo pour le "bon" cas */
+.compare-good .compare-bars span {
+  background-color: var(--color-accent);
+}
+
+/* Barres ternes pour le "mauvais" cas */
+.compare-bad .compare-bars span {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.compare-caption {
+  font-size: 0.85rem;
+  color: rgba(250, 250, 254, 0.6);
+  text-align: center;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .momentum-compare {
+    flex-direction: column;      /* les deux graphiques s'empilent */
+    align-items: center;
+  }
+  .compare-card {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 540px) {
+  .momentum {
+    padding: 3rem 1.5rem 4rem;
+  }
+  .momentum-title {
+    font-size: 1.8rem;           /* le gros titre rapetisse */
+  }
+}
