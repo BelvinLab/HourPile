@@ -16,3 +16,7 @@ export async function create_session({ idLanguage, activity, duration, note, res
     }),
   });
 }
+
+export async function getMySession(){
+  return apiRequest("/session/my_session");
+}

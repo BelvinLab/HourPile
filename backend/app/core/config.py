@@ -1,3 +1,4 @@
+from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -8,16 +9,29 @@ class Settings(BaseSettings):
     APP_NAME: str = "HourPile API"
 
     # --- Sécurité / JWT ---
-    # SECRET_KEY : clé utilisée pour SIGNER les tokens. Elle doit rester
-    # secrète (dans le .env) et être longue/aléatoire en production.
-    # Si elle fuite, n'importe qui peut forger de faux tokens.
-    SECRET_KEY: str = "dev_secret_a_changer_en_prod"
+    # Aucune valeur par défaut : l'app refuse de démarrer si la clé n'est
+    # pas fournie. En production, une clé par défaut connue permettrait
+    # à quiconque de forger des tokens valides.
+    SECRET_KEY: str
 
     # Algorithme de signature. HS256 = standard, symétrique, suffisant ici.
     ALGORITHM: str = "HS256"
 
     # Durée de validité d'un token, en minutes (ici 24h).
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24
+
+    # Origines autorisées par CORS, séparées par des virgules
+    CORS_ORIGINS: str = "http://localhost:5173"
+
+    @field_validator("DATABASE_URL")
+    @classmethod
+    def force_psycopg_driver(cls, v: str) -> str:
+        """Railway fournit 'postgresql://', SQLAlchemy attend
+        'postgresql+psycopg://'. On normalise pour que les deux
+        environnements fonctionnent sans intervention."""
+        if v.startswith("postgresql://"):
+            return v.replace("postgresql://", "postgresql+psycopg://", 1)
+        return v
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 

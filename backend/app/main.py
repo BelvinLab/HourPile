@@ -13,10 +13,10 @@ app = FastAPI(title=settings.APP_NAME)
 # Sans ça, le navigateur bloque les requêtes venant de localhost:5173
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],   # l'adresse du frontend Vite
+    allow_origins=settings.CORS_ORIGINS.split(","),
     allow_credentials=True,
-    allow_methods=["*"],      # autorise GET, POST, PUT, DELETE...
-    allow_headers=["*"],      # autorise tous les en-têtes (dont Authorization)
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 app.include_router(auth.router)

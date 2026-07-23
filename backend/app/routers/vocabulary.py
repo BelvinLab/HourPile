@@ -16,6 +16,6 @@ def create_vocabulary(
 ):
     return vocabulary_services.create_vocabulary(db,data,current_user.id_user)
 
-@router.get("/my-vocabulary", response_model=list[VocabularyResponse])
+@router.get("/my_vocabulary", response_model=list[VocabularyResponse])
 def get_user_vocabulary(current_user=Depends(get_current_user),db:Session=Depends(get_db)):
     return vocabulary_services.user_vocabulary(db,current_user.id_user)

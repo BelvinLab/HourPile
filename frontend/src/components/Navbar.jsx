@@ -5,7 +5,8 @@ function Navbar() {
   return (
     <nav className="navbar">
       {/* Logo à gauche */}
-      <div className="navbar-logo">HourPile</div>
+      <Link to="/" className="navbar-logo">HourPile</Link>
+      
 
       {/* Liens au centre */}
       <ul className="navbar-links">

@@ -1,4 +1,5 @@
-from sqlalchemy import String, ForeignKey
+from sqlalchemy import String, ForeignKey,func
+from datetime import datetime
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.core.database import Base
 
@@ -27,6 +28,10 @@ class Vocabulary(Base):
     
     # Associe le vocabulaire à la langue de la table "languages" (clé "id_language")
     id_language: Mapped[int] = mapped_column(ForeignKey("languages.id_language"))
+    created_at: Mapped[datetime] = mapped_column(
+        server_default=func.now(),
+        nullable=False,
+    )
 
     # ==========================================
     # 2. LES RELATIONS (Raccourcis Python / ORM)

@@ -1,5 +1,5 @@
 // L'adresse du backend. Un seul endroit à changer le jour du déploiement.
-const API_URL = "http://localhost:8000";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
 
 
