@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Input from "../form/Input";
 import Button from "../form/Button";
-import { getLanguages } from "../../api/SessionService";
+import { getLanguages } from "../../api/sessionService";
 import { create_vocabulary } from "../../api/vocabularyService";
 
 // Les valeurs doivent correspondre EXACTEMENT à ton enum backend
