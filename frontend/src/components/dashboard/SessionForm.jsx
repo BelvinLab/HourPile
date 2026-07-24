@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Input from "../form/Input";
 import Button from "../form/Button";
-import { getLanguages,create_session } from "../../api/SessionService";
+import { getLanguages,create_session } from "../../api/sessionService";
 
 // Les valeurs doivent correspondre EXACTEMENT à ton enum backend
 const ACTIVITIES = [
