@@ -15,6 +15,10 @@ export async function register({ firstName, lastName, email, password }) {
   });
 }
 
+
+export async function getMe() {
+  return apiRequest("/users/me");
+}
 /**
  * Connexion. ATTENTION : /auth/login attend du form-data (OAuth2),
  * pas du JSON — d'où le traitement particulier ici.
@@ -47,3 +51,4 @@ export function logout() {
 export function isAuthenticated() {
   return !!localStorage.getItem("token");
 }
+

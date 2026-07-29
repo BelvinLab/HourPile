@@ -5,6 +5,7 @@ import SideBar from "../components/dashboard/SideBar";
 import Modal from "../components/ui/Modal";
 import SessionForm from "../components/dashboard/SessionForm";
 import VocabularyForm from "../components/dashboard/VocabularyForm";
+import BottomNav from "../components/dashboard/BottomNav";
 
 
 
@@ -24,7 +25,7 @@ function DashboardLayout() {
           <Outlet />
         </main>
       </div>
-
+       <BottomNav />
       {/* La modale, au niveau du layout */}
       <Modal
         open={sessionModalOpen}
