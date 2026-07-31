@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Button from "../form/Button";
-import { getLanguages } from "../../api/SessionService";
+import { getLanguages } from "../../api/languageSevice";
 import {
   declareLanguage,
   updateUserLanguage,
