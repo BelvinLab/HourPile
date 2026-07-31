@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import {useOutletContext} from "react-router-dom";
 import { Clock } from "lucide-react";
 import { getMySession } from "../api/sessionService";
 import { getLanguages } from "../api/sessionService";
@@ -45,6 +46,7 @@ function Sessions() {
   const [languages, setLanguages] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const { refresh_key } = useOutletContext();
 
   useEffect(() => {
     Promise.all([getMySession(), getLanguages()])
@@ -58,7 +60,7 @@ function Sessions() {
       })
       .catch(() => setError("Impossible de charger les sessions."))
       .finally(() => setLoading(false));
-  }, []);
+  }, [refresh_key]);
 
   if (loading) {
     return (

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import {useOutletContext} from "react-router-dom";
 import { Clock, ListChecks, Flame } from "lucide-react";
 import MetricCard from "../components/dashboard/MetricCard";
 import VocabularyTicker from "../components/dashboard/VocabularyTicker";
@@ -19,6 +20,7 @@ import {
 } from "../utils/stats";
 
 function Dashboard() {
+  const { refresh_key } = useOutletContext();
   const [sessions, setSessions] = useState([]);
   const [words, setWords] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -34,7 +36,7 @@ function Dashboard() {
       })
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
-  }, []);
+  }, [refresh_key]);
 
   if (loading) {
     return (

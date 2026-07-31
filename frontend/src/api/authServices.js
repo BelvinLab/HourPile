@@ -48,7 +48,23 @@ export function logout() {
   localStorage.removeItem("token");
 }
 
-export function isAuthenticated() {
-  return !!localStorage.getItem("token");
-}
 
+export function isAuthenticated() {
+  const token = localStorage.getItem("token");
+  if (!token) return false;
+
+  try {
+    // un JWT = 3 parties séparées par des points ; la 2e contient les données
+    const payload = JSON.parse(atob(token.split(".")[1]));
+    // exp est en secondes, Date.now() en millisecondes
+    if (payload.exp * 1000 < Date.now()) {
+      localStorage.removeItem("token");
+      return false;
+    }
+    return true;
+  } catch {
+    // token malformé
+    localStorage.removeItem("token");
+    return false;
+  }
+}

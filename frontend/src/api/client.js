@@ -39,12 +39,19 @@ export async function apiRequest(endpoint, options = {}) {
   };
 
   const response = await fetch(`${API_URL}${endpoint}`, config);
+  if (response.status === 401) {
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+    throw new Error("Session expirée, reconnecte-toi.");
+  }
 
   // FastAPI renvoie les erreurs avec un champ "detail"
   if (!response.ok) {
     const errorData = await response.json().catch(() => ({}));
     throw new Error(extractErrorMessage(errorData));
   }
+
+  if (response.status === 204) return null;
 
   return response.json();
 }

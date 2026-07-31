@@ -1,8 +1,9 @@
 from pydantic import BaseModel,  ConfigDict
 from app.models.enums import ProficiencyLevel 
+from app.schemas.language import LanguageRead
 
 # --- SCHÉMA DE CRÉATION ---
-class UserLanguageCreate(BaseModel):  # Renommé pour éviter le conflit avec SQLAlchemy
+class UserLanguageCreate(BaseModel):  
     id_language: int 
     
    
@@ -19,5 +20,9 @@ class UserLanguageResponse(BaseModel):
     id_language: int
     current_level: ProficiencyLevel
     target_level: ProficiencyLevel
-
+    language: LanguageRead
     model_config = ConfigDict(from_attributes=True)
+
+class UserLanguageUpdate(BaseModel):
+    current_level: ProficiencyLevel | None = None
+    target_level: ProficiencyLevel | None = None

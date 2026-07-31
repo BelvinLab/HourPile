@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { BookOpen } from "lucide-react";
 import { getMyVocabulary } from "../api/vocabularyService";
 import { getLanguages } from "../api/sessionService";
+import {useOutletContext} from "react-router-dom";
 
 // Traductions des catégories grammaticales
 const CATEGORY_LABELS = {
@@ -20,6 +21,7 @@ function Vocabulary() {
   const [languages, setLanguages] = useState({});
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
+  const { refresh_key } = useOutletContext();
 
   useEffect(() => {
     Promise.all([getLanguages(), getMyVocabulary()])
@@ -31,7 +33,7 @@ function Vocabulary() {
       })
       .catch(() => setError("Impossible de charger le vocabulaire."))
       .finally(() => setLoading(false));
-  }, []);
+  }, [refresh_key]);
 
   if (loading) {
     return (

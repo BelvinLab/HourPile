@@ -3,7 +3,7 @@ from sqlalchemy import text
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
 from app.core.database import engine
-from app.routers import auth,users,session,vocabulary,language
+from app.routers import auth,users,session,vocabulary,language,user_language
 
 
 app = FastAPI(title=settings.APP_NAME)
@@ -24,7 +24,7 @@ app.include_router(users.router)
 app.include_router(session.router)
 app.include_router(vocabulary.router)
 app.include_router(language.router)
-
+app.include_router(user_language.router)
 
 @app.get("/")
 def root():

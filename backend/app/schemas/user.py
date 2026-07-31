@@ -11,6 +11,7 @@ class UserCreate(BaseModel):
 
     # HttpUrl valide strictement le lien EN ENTRÉE
     avatar_url: HttpUrl | None = Field(default=None)
+    bio:str|None
 
 
 # --- SCHÉMA DE RÉPONSE (ce que l'API renvoie) ---
@@ -22,7 +23,7 @@ class UserResponse(BaseModel):
 
     # str simple EN SORTIE : on renvoie ce qui est stocké, sans surprise
     avatar_url: str | None = None
-
+    bio:str|None
     created_at: datetime
     updated_at: datetime
 
@@ -35,3 +36,9 @@ class UserLogin(BaseModel):
 class Token(BaseModel):
     access_token:str
     token_type: str = "bearer" 
+
+class UpdateUser(BaseModel):
+    first_name: str | None = None
+    last_name: str | None = None
+    bio: str | None = Field(default=None, max_length=500)
+    avatar_url: str | None = None

@@ -13,7 +13,11 @@ function DashboardLayout() {
   // L'état qui pilote l'ouverture de la modale
   const [sessionModalOpen, setSessionModalOpen] = useState(false);
    const [wordModalOpen, setWordModalOpen] = useState(false);
+   const [refresh_key, setRefreshKey] = useState(0);
 
+   function handleRefresh() {
+    setRefreshKey((oldKey) => oldKey + 1);
+   };
   return (
     <div className="flex h-screen flex-col overflow-hidden bg-[#F5F3FB]">
       {/* on donne à la topbar le moyen d'ouvrir la modale */}
@@ -22,7 +26,7 @@ function DashboardLayout() {
       <div className="flex flex-1 gap-6 overflow-hidden px-6 py-6">
         <SideBar />
         <main className="min-w-0 flex-1 overflow-y-auto">
-          <Outlet />
+          <Outlet context={{refresh_key}}/>
         </main>
       </div>
        <BottomNav />
@@ -32,14 +36,18 @@ function DashboardLayout() {
         onClose={() => setSessionModalOpen(false)}
         title="Nouvelle session"
       >
-        <SessionForm onSuccess={() => setSessionModalOpen(false)} />
+        <SessionForm onSuccess={() =>{ 
+           setSessionModalOpen(false);
+           handleRefresh();}} />
       </Modal>
       <Modal
         open={wordModalOpen}
         onClose={() => setWordModalOpen(false)}
         title="Nouveau mot"
       >
-        <VocabularyForm onSuccess={() => setWordModalOpen(false)} />
+        <VocabularyForm onSuccess={() => {
+          setWordModalOpen(false);
+          handleRefresh();}} />
       </Modal>
     </div>
   );

@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 
 from app.core.security import hash_password, verify_password
 from app.models.user import User
-from app.schemas.user import UserCreate
+from app.schemas.user import UserCreate,UpdateUser
 
 
 class EmailAlreadyExists(Exception):
@@ -48,4 +48,16 @@ def authenticate_user(db: Session, email: str, password: str) -> User | None:
     if not verify_password(password, user.hashed_password):
         return None
         
+    return user
+
+def user_update(db:Session,id_user:int,data:UpdateUser)->User|None:
+    user=db.scalars(select(User).where(User.id_user==id_user)).first()
+
+    if user is None :
+        return None
+
+    for field,value in data.model_dump(exclude_unset=True).items():
+        setattr(user,field,value)
+    db.commit()
+    db.refresh(user)
     return user
