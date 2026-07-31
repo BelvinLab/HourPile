@@ -13,8 +13,8 @@ import { getMySession } from "../api/sessionService";
 import { getMyVocabulary } from "../api/vocabularyService";
 import { getMyLanguages, deleteUserLanguage } from "../api/userLanguageService";
 import Modal from "../components/ui/Modal";
-import ProfileForm from "../components/dashboard/ProfileForm";
-import LanguageForm from "../components/dashboard/LanguageForm";
+import ProfileForm from "../components/dashboard/Profileform";
+import LanguageForm from "../components/dashboard/Languageform";
 import { totalMinutes, formatDuration, calculateStreak } from "../utils/stats";
 
 function formatMonthYear(iso) {
