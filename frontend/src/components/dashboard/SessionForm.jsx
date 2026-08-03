@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Input from "../form/Input";
 import Button from "../form/Button";
 import { getLanguages,create_session } from "../../api/sessionService";
+import { getMyLanguages } from "../../api/userLanguageService";
 
 // Les valeurs doivent correspondre EXACTEMENT à ton enum backend
 const ACTIVITIES = [
@@ -24,14 +25,17 @@ function SessionForm({ onSuccess }) {
   const [error, setError] = useState("");
 
   // Charge les langues au montage du composant
-  useEffect(() => {
-    getLanguages()
-      .then((data) => {
-        setLanguages(data);
-        if (data.length) setIdLanguage(String(data[0].id_language));
-      })
-      .catch(() => setError("Impossible de charger les langues."));
-  }, []);
+ useEffect(() => {
+  Promise.all([getLanguages(), getMyLanguages()])
+    .then(([allLanguages, myLanguages]) => {
+      const declared = myLanguages.map((ul) => ul.language);
+      const list = declared.length ? declared : allLanguages;
+
+      setLanguages(list);
+      if (list.length) setIdLanguage(String(list[0].id_language));
+    })
+    .catch(() => setError("Impossible de charger les langues."));
+}, []);
 
   async function handleSubmit(e) {
     e.preventDefault();

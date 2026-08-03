@@ -1,10 +1,11 @@
 import { NavLink } from "react-router-dom";
-import { LayoutDashboard, Clock, BookOpen } from "lucide-react";
+import { LayoutDashboard, Clock, BookOpen, Compass } from "lucide-react";
 
 const links = [
   { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard, end: true },
   { to: "/dashboard/sessions", label: "Sessions", icon: Clock },
   { to: "/dashboard/vocabulary", label: "Vocabulaire", icon: BookOpen },
+  { to: "/dashboard/journey", label: "Parcours", icon: Compass },
 ];
 
 function SideBar() {

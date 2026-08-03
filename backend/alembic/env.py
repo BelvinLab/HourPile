@@ -9,8 +9,15 @@ from app.core.database import Base
 # --- Import des modèles ---
 # Chaque modèle doit être importé ici pour qu'Alembic "voie" sa table.
 
-from app.models import learning_session, user_language, vocabulary, user, language  # noqa
-
+from app.models import (  # noqa
+    language,
+    learning_objective,
+    learning_session,
+    objective_achievement,
+    user,
+    user_language,
+    vocabulary,
+)
 config = context.config
 
 # injecte l'URL depuis l'environnement (pas en dur dans alembic.ini)

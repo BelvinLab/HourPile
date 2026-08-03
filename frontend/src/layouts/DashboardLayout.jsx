@@ -25,7 +25,7 @@ function DashboardLayout() {
 
       <div className="flex flex-1 gap-6 overflow-hidden px-6 py-6">
         <SideBar />
-        <main className="min-w-0 flex-1 overflow-y-auto">
+        <main className="min-w-0 flex-1 overflow-y-auto pb-[calc(5rem+env(safe-area-inset-bottom))] md:pb-0">
           <Outlet context={{refresh_key}}/>
         </main>
       </div>

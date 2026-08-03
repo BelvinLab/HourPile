@@ -3,6 +3,7 @@ import Input from "../form/Input";
 import Button from "../form/Button";
 import { getLanguages } from "../../api/sessionService";
 import { create_vocabulary } from "../../api/vocabularyService";
+import { getMyLanguages } from "../../api/userLanguageService";
 
 // Les valeurs doivent correspondre EXACTEMENT à ton enum backend
 const CATEGORIES = [
@@ -30,14 +31,16 @@ function VocabularyForm({ onSuccess }) {
 
   // Charge les langues au montage du composant
   useEffect(() => {
-    getLanguages()
-      .then((data) => {
-        setLanguages(data);
-        if (data.length) setIdLanguage(String(data[0].id_language));
-      })
-      .catch(() => setError("Impossible de charger les langues."));
-  }, []);
+  Promise.all([getLanguages(), getMyLanguages()])
+    .then(([allLanguages, myLanguages]) => {
+      const declared = myLanguages.map((ul) => ul.language);
+      const list = declared.length ? declared : allLanguages;
 
+      setLanguages(list);
+      if (list.length) setIdLanguage(String(list[0].id_language));
+    })
+    .catch(() => setError("Impossible de charger les langues."));
+}, []);
   async function handleSubmit(e) {
     e.preventDefault();
     setError("");

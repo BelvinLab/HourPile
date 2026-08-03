@@ -19,12 +19,11 @@ class LearningSession(Base):
     note: Mapped[str | None] = mapped_column(String(500), default=None)
     resource: Mapped[str | None] = mapped_column(String(250), default=None)
     
-    # 1. CORRECTION : "created_at:" avec deux points, et non "="
     created_at: Mapped[datetime] = mapped_column(server_default=func.now())
 
     id_user: Mapped[int] = mapped_column(ForeignKey("users.id_user"))
     
-    # 2. CORRECTION : Orthographe de la table étrangère "languages.id_language"
+
     id_language: Mapped[int] = mapped_column(ForeignKey("languages.id_language"))
 
     user: Mapped["User"] = relationship()

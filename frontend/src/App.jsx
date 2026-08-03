@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import Sessions from "./pages/Sessions";
 import Vocabulary from "./pages/Vocabulary";
 import Profile from "./pages/Profile";
+import Journey from "./pages/Journey";
 import ProtectedRoute from "./routes/ProtecdedRoute";
 import { isAuthenticated } from "./api/authServices";
 
@@ -37,7 +38,9 @@ function App() {
           <Route path="sessions" element={<Sessions />} />
           <Route path="vocabulary" element={<Vocabulary />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="journey" element={<Journey/>}/>
         </Route>
+        
 
         {/* Attrape toutes les URL inconnues */}
         <Route path="*" element={<NotFound />} />
