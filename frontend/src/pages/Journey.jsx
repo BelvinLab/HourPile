@@ -129,19 +129,17 @@ function Journey() {
           </p>
         </div>
 
-        {languages.length > 1 && (
-          <select
+      <select
             value={selectedLanguage ?? ""}
             onChange={(e) => setSelectedLanguage(Number(e.target.value))}
             className="rounded-xl border border-solid border-gray-200 bg-white px-3 py-2 text-sm text-[#1A1523] focus:border-[#6C5CE7] focus:outline-none"
-          >
+         >
             {languages.map((ul) => (
-              <option key={ul.id} value={ul.language.id_language}>
-                {ul.language.name}
-              </option>
+                <option key={ul.id} value={ul.language.id_language}>
+                    {ul.language.name}
+                </option>
             ))}
-          </select>
-        )}
+      </select>
       </div>
 
       {error && <p className="text-sm text-red-500">{error}</p>}
