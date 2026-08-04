@@ -15,15 +15,11 @@ class LLMError(Exception):
 
 
 async def generate_json(prompt: str, timeout: float = 30.0) -> dict:
-    """Envoie un prompt et attend une réponse JSON.
-
-    Le modèle encadre souvent son JSON de balises Markdown ; on les
-    retire avant de parser.
-    """
+    """Envoie un prompt et attend une réponse JSON."""
     payload = {
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {
-            "temperature": 0.9,          # un peu de variété dans les histoires
+            "temperature": 0.9,
             "responseMimeType": "application/json",
         },
     }
@@ -37,6 +33,11 @@ async def generate_json(prompt: str, timeout: float = 30.0) -> dict:
             )
             response.raise_for_status()
             data = response.json()
+    except httpx.HTTPStatusError as exc:
+        # le corps de la réponse contient le message d'erreur de Google
+        raise LLMError(
+            f"HTTP {exc.response.status_code} : {exc.response.text[:300]}"
+        ) from exc
     except httpx.HTTPError as exc:
         raise LLMError(f"Appel au modèle impossible : {exc}") from exc
 
@@ -45,7 +46,7 @@ async def generate_json(prompt: str, timeout: float = 30.0) -> dict:
     except (KeyError, IndexError) as exc:
         raise LLMError("Réponse du modèle inattendue.") from exc
 
-    # ceinture et bretelles : on nettoie d'éventuelles balises Markdown
+    # on nettoie d'éventuelles balises Markdown
     cleaned = raw.strip().removeprefix("```json").removeprefix("```").removesuffix("```")
 
     try:

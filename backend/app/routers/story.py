@@ -10,6 +10,10 @@ from app.models.user_language import UserLanguage
 from app.schemas.story import StoryGenerate, StoryResponse
 from app.services import story_services
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 router = APIRouter(prefix="/stories", tags=["stories"])
 
 
@@ -60,7 +64,8 @@ async def generate_story(
             status_code=status.HTTP_429_TOO_MANY_REQUESTS,
             detail="Limite quotidienne atteinte. Reviens demain.",
         )
-    except LLMError:
+    except LLMError as exc:
+        logger.error("Échec de génération : %s", exc)
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail="La génération a échoué. Réessaie dans un instant.",
