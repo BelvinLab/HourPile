@@ -4,6 +4,7 @@ from app.core.database import Base
 
 from app.models.user import User
 from app.models.language import Language
+from app.models.enums import ProficiencyLevel
 
 class UserLanguage(Base):
     __tablename__ = "user_languages"

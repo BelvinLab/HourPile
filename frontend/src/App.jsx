@@ -9,6 +9,7 @@ import Sessions from "./pages/Sessions";
 import Vocabulary from "./pages/Vocabulary";
 import Profile from "./pages/Profile";
 import Journey from "./pages/Journey";
+import Stories from "./pages/Stories";
 import ProtectedRoute from "./routes/ProtecdedRoute";
 import { isAuthenticated } from "./api/authServices";
 
@@ -39,6 +40,7 @@ function App() {
           <Route path="vocabulary" element={<Vocabulary />} />
           <Route path="profile" element={<Profile />} />
           <Route path="journey" element={<Journey/>}/>
+          <Route path="stories" element={<Stories />} />
         </Route>
         
 

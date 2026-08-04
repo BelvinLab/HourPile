@@ -17,6 +17,7 @@ from app.models import (  # noqa
     user,
     user_language,
     vocabulary,
+    story
 )
 config = context.config
 

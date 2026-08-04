@@ -23,6 +23,11 @@ class Settings(BaseSettings):
     # Origines autorisées par CORS, séparées par des virgules
     CORS_ORIGINS: str = "http://localhost:5173"
 
+    # Coordonneés du llma utilisé
+
+    LLM_API_KEY: str
+    LLM_MODEL: str = "gemini-3.5-flash"
+
     @field_validator("DATABASE_URL")
     @classmethod
     def force_psycopg_driver(cls, v: str) -> str:

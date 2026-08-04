@@ -6,6 +6,7 @@ const links = [
   { to: "/dashboard/sessions", label: "Sessions", icon: Clock },
   { to: "/dashboard/vocabulary", label: "Vocabulaire", icon: BookOpen },
   { to: "/dashboard/journey", label: "Parcours", icon: Compass },
+  { to: "/dashboard/stories", label: "Histoires", icon: BookOpen },
 ];
 
 function BottomNav() {
